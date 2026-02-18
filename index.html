@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortons Tattoos Consent Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mortons Tattoos</h1>
+      <p>Flat 9, Regent Street | 📧 mortonsservices30@gmail.com | 📞 07368 151141</p>
+    </header>
+
+    <form id="consentForm" method="POST" action="https://formspree.io/f/xkovzqde">
+      
+      <!-- Customer Info -->
+      <section class="section">
+        <h2>Customer Information</h2>
+        <label>Full Name: <input type="text" name="fullName" required></label>
+        <label>Phone Number: <input type="text" name="phone" required></label>
+        <label>Email: <input type="email" name="email" required></label>
+        <label>Date of Birth: <input type="date" name="dob" required></label>
+        <label>Date: <input type="text" name="date" id="currentDate" readonly></label>
+      </section>
+
+      <!-- Legal Consent -->
+      <section class="section legal">
+        <h2>Legal Consent</h2>
+        <div class="legal-box">
+          <p>Before signing, please read carefully:</p>
+          <p>
+          I acknowledge that the tattoo service is provided by Mortons Tattoos and is not a medical service. I understand that tattoos are permanent and may involve risks including infection, allergic reaction, or skin irritation. I confirm that all equipment is sterilised, precautions are taken, and I accept responsibility for the procedure and aftercare. Results may vary and no outcome is guaranteed. By agreeing below, I consent to the tattoo procedure.
+          </p>
+        </div>
+        <label><input type="checkbox" id="legalAgree" required> I have read and understand the above</label>
+      </section>
+
+      <!-- Medical Info -->
+      <section class="section">
+        <h2>Medical Information</h2>
+        <label>Do you have any medical conditions, allergies, or skin issues? 
+          <select id="medicalSelect" name="medicalSelect" required>
+            <option value="">Select</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </label>
+        <label id="medicalTextLabel" style="display:none;">
+          Please explain: <textarea name="medicalText" id="medicalText" rows="3"></textarea>
+        </label>
+      </section>
+
+      <!-- Payment Section -->
+      <section class="section">
+        <h2>Payment</h2>
+        <label>How will you be paying?
+          <select id="paymentMethod" name="paymentMethod" required>
+            <option value="">Select</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Cash">Cash</option>
+            <option value="Free Tattoo">Free Tattoo</option>
+          </select>
+        </label>
+        <div id="paymentExtra" style="display:none;">
+          <label>Have you already paid? 
+            <select name="paidStatus" id="paidStatus">
+              <option value="">Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+          <label>Amount Paid (£): <input type="number" name="amountPaid" step="0.01"></label>
+        </div>
+      </section>
+
+      <!-- Free Touch-Up -->
+      <section class="section">
+        <h2>Free Touch-Up Interest</h2>
+        <label>Would you be interested in a free touch-up after your tattoo has healed?
+          <select name="touchUp" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <p class="touchup-note">*Touch-ups must be booked within 6–8 weeks of healing.</p>
+      </section>
+
+      <!-- Signatures -->
+      <section class="section signature-section">
+        <h2>Signatures</h2>
+        <p>Customer Signature:</p>
+        <canvas id="customerSig" width="400" height="100"></canvas>
+        <input type="hidden" name="customerSigData" id="customerSigData">
+
+        <p>Artist Signature (Summer Morton):</p>
+        <canvas id="artistSig" width="400" height="100"></canvas>
+        <input type="hidden" name="artistSigData" id="artistSigData">
+      </section>
+
+      <button type="submit">Submit Consent Form</button>
+    </form>
+    <div id="successMessage" style="display:none;">✅ Consent confirmed. Tattoo may now proceed.</div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
